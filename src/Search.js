@@ -6,10 +6,13 @@ class Search extends Component {
 
   fetchMovies(event) {
     event.preventDefault();
-
+    var url = 'http://www.omdbapi.com/?s=' + this.refs.query.value;
+    // debugger;
     $.ajax({
-      url: 'http://www.omdbapi.com/?t=ghost+in+the+shell&y=&plot=short&r=json',
+      url: url,
       method: 'get'
+    }).done( function(response) {
+      console.log(response);
     })
   }
 
@@ -18,7 +21,7 @@ class Search extends Component {
     return(
       <div className="row">
         <form onSubmit={this.fetchMovies.bind(this)} className="col s12 m4">
-          <input type="text" />
+          <input ref="query" type="text" />
           <br />
           <input type="submit" />
         </form>
