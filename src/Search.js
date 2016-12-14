@@ -11,7 +11,7 @@ class Search extends Component {
       url: url,
       method: 'get'
     }).done( response => {
-      // console.log(response)
+      console.log(response)
       if (response.Response === "True") {
         this.props.updateMovies(response.Search);
         $('.errors').empty();

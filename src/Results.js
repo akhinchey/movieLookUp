@@ -8,11 +8,11 @@ class Results extends Component {
     let movies = this.props.movieList;
     // debugger;
     return(
-      <div>
+      <main className='center-align row'>
       {movies.map( function(obj, i) {
         return <Result object={obj} key={i}/>
         })}
-      </div>
+      </main>
     )
   }
 }
