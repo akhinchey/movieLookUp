@@ -12,11 +12,14 @@ class Search extends Component {
       method: 'get'
     }).done( response => {
       // console.log(response)
-      this.props.updateMovies(response.Search);
-    // debugger;
-    }).fail( response => {
-      console.log(response)
-    })
+      if (response.Response === "True") {
+        this.props.updateMovies(response.Search);
+        $('.errors').empty();
+      } else {
+        this.props.updateMovies([]);
+        $('.errors').text(response.Error);
+      }
+    });
   }
 
 

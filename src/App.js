@@ -10,7 +10,9 @@ class App extends Component {
   constructor(){
     super();
     debugger;
-    this.state = { movieList:[] }
+    this.state = { 
+      movieList: []
+    }
   }
 
   updateMovies(movies) {
@@ -23,7 +25,10 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        <Search updateMovies={this.updateMovies.bind(this)} />
+        <Search updateMovies={this.updateMovies.bind(this)}/>
+        <div className='errors'>
+
+        </div>
         <Results movieList={this.state.movieList} />
       </div>
     );
