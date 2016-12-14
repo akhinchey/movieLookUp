@@ -7,13 +7,13 @@ class Search extends Component {
   fetchMovies(event) {
     event.preventDefault();
     var url = 'http://www.omdbapi.com/?s=' + this.refs.query.value;
-    // debugger;
     $.ajax({
       url: url,
       method: 'get'
     }).done( function(response) {
-      console.log(response);
-    })
+    // debugger;
+      this.props.updateMovies(response.Search);
+    }.bind(this))
   }
 
 
