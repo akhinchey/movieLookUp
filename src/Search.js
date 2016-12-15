@@ -6,7 +6,7 @@ class Search extends Component {
 
   fetchMovies(event) {
     event.preventDefault();
-    var url = 'http://www.omdbapi.com/?s=' + this.refs.query.value.split(" ").join("+");
+    var url = 'https://www.omdbapi.com/?s=' + this.refs.query.value.split(" ").join("+");
     $.ajax({
       url: url,
       method: 'get'
