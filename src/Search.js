@@ -10,7 +10,7 @@ class Search extends Component {
     $.ajax({
       url: url,
       method: 'get'
-    }).done( response => {
+    }).done( function(response) {
       console.log(response)
       if (response.Response === "True") {
         this.props.updateMovies(response.Search);
@@ -19,7 +19,7 @@ class Search extends Component {
         this.props.updateMovies([]);
         $('.errors').text(response.Error);
       }
-    });
+    }.bind(this));
   }
 
 
