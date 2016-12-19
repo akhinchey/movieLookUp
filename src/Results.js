@@ -6,12 +6,12 @@ class Results extends Component {
 
   render() {
     let movies = this.props.movieList;
-    // debugger;
+    
     return(
       <main className='center-align row'>
       {movies.map( function(obj, i) {
-        return <Result object={obj} key={i}/>
-        })}
+        return <Result navHandler={this.props.navHandler} object={obj} key={i}/>
+        }.bind(this))}
       </main>
     )
   }

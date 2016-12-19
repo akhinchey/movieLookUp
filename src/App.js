@@ -3,6 +3,8 @@ import Nav from './Nav';
 import Search from './Search';
 import Results from './Results';
 import Result from './Result';
+import Main from './Main';
+import MovieInfo from './MovieInfo'
 import './App.css';
 
 class App extends Component {
@@ -10,8 +12,9 @@ class App extends Component {
   constructor(){
     super();
     // debugger;
-    this.state = { 
-      movieList: []
+    this.state = {
+      movieList: [],
+      renderComponent: "Main"
     }
   }
 
@@ -21,17 +24,20 @@ class App extends Component {
     });
   }
 
-  render() {
-    return (
-      <div>
-        <Nav />
-        <Search updateMovies={this.updateMovies.bind(this)} />
-        <div className='errors'>
+  navHandler(component){
+    this.setState({
+      renderComponent: component
+    });
+  }
 
-        </div>
-        <Results movieList={this.state.movieList} />
-      </div>
-    );
+  render() {
+    let comp = this.state.renderComponent;
+
+    if(comp === 'Main'){
+      return (<Main updateMovies={this.updateMovies.bind(this)} navHandler={this.navHandler.bind(this)}  movieList={this.state.movieList}/>);
+    } else {
+      return (<MovieInfo />);
+    }
   }
 }
 

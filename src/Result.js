@@ -1,32 +1,17 @@
 import React, { Component } from 'react';
+import MovieInfo from './MovieInfo'
 import $ from 'jquery';
 
 class Result extends Component {
 
   fetchMovieInfo(event) {
     event.preventDefault();
-    debugger;
+    console.log('hi');
+    this.props.navHandler("MovieInfo");
   }
 
   render() {
     return(
-        // <div className='result'>
-        //   <p>
-        //     <img src={this.props.object.Poster} />
-        //   </p>
-        //   <p>
-        //     Title: {this.props.object.Title}
-        //   </p>
-        //   <p>
-        //     Type: {this.props.object.Type}
-        //   </p>
-        //   <p>
-        //     Year: {this.props.object.Year}
-        //   </p>
-        //   <p>
-        //     <a onClick={this.fetchMovieInfo.bind(this)}>details</a>
-        //   </p>
-        // </div>
         <div className="result-card">
           <div className="col s12 m7">
             <div className="card">
@@ -44,6 +29,7 @@ class Result extends Component {
                 <p>
                   Year: {this.props.object.Year}
                 </p>
+                <a onClick={this.fetchMovieInfo.bind(this)} href="{this.props.object.title}">more info</a>
               </div>
               <div className="card-action">
                 <a href="#">This is a link</a>
