@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import Search from './Search';
 import Results from './Results';
-import Result from './Result';
 import './App.css';
 
 class Main extends Component {
@@ -17,7 +16,8 @@ class Main extends Component {
         <div className='errors'>
 
         </div>
-        <Results navHandler={this.props.navHandler} movieList={this.props.movieList} />
+        <Results navHandler={this.props.navHandler} movieList={this.props.movieList}
+        updateThisMovie={this.props.updateThisMovie}/>
       </div>
     );
   }
