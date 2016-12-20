@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       movieList: [],
       renderComponent: "Main",
-      thisMovie: {}
+      thisMovie: {},
+      currentSearch: ""
     }
   }
 
@@ -20,9 +21,10 @@ class App extends Component {
     });
   }
 
-  updateMovies(movies) {
+  updateMovies(movies, search) {
     this.setState({
-      movieList: movies
+      movieList: movies,
+      currentSearch: search
     });
   }
 
@@ -37,6 +39,7 @@ class App extends Component {
 
     if(comp === 'Main'){
       return (<Main updateMovies={this.updateMovies.bind(this)} navHandler={this.navHandler.bind(this)}  movieList={this.state.movieList}
+      currentSearch={this.state.currentSearch}
       updateThisMovie={this.updateThisMovie.bind(this)}/>);
     } else {
       return (<MovieInfo thisMovie={this.state.thisMovie} navHandler={this.navHandler.bind(this)}/>)

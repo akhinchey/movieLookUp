@@ -5,12 +5,12 @@ import Results from './Results';
 import './App.css';
 
 class Main extends Component {
-  
+
   render() {
     return (
       <div>
-        <Nav navHandler={this.props.navHandler}/>
-        <Search updateMovies={this.props.updateMovies} />
+        <Nav navHandler={this.props.navHandler} />
+        <Search updateMovies={this.props.updateMovies} currentSearch={this.props.currentSearch} />
         <div className='errors'>
 
         </div>

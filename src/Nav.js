@@ -4,7 +4,7 @@ class Nav extends Component {
 
   goBack(event){
     event.preventDefault();
-    this.props.navHandler('Main')
+    this.props.navHandler('Main');
   }
 
   render(){
