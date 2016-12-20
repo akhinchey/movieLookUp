@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-
+import $ from 'jquery'
 class Result extends Component {
 
   fetchMovieInfo(event) {
     event.preventDefault();
-    console.log('hi');
-    this.props.updateThisMovie({
-        title: 'this and that',
-        year: '198this'
-    })
-    this.props.navHandler("MovieInfo");
+    var url = 'https://www.omdbapi.com/?i=' + this.props.object.imdbID + '&plot=full';
+
+    $.ajax({
+      url: url,
+      method: 'get'
+    }).done( function(response) {
+      this.props.updateThisMovie(response);
+      this.props.navHandler("MovieInfo");
+    }.bind(this));
   }
 
   render() {
