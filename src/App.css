@@ -1,33 +1,90 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .result-card {
   display: inline-block;
   padding: 15px;
 }
 
+.material-icons {
+  user-select: none;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Josefin Sans', sans-serif !important;
+}
+
 .card {
   width: 300px;
+}
+
+.search-form {
+  margin-top: 20%;
+  border: solid 2px #e57373;
+  padding-left: 25px;
+  padding-top: 35px;
+  border-radius: 50px;;
+}
+
+.search-form:hover {
+  border: solid 2px rgba(0,0,0,0.7);
+}
+
+ul .info li, span, .plot {
+  font-size: 20px;
+}
+
+span {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.plot {
+  text-indent: 25px;
+}
+
+strong {
+  font-weight: 600;
+  font-size: 25px;
+  margin-right: 15px;
+  line-height: 40px;
+}
+/* label color */
+.input-field label {
+  color: #000;
+  font-size: 1.3em;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: white ;
+  z-index: -10100000;
+  font-size: 1.1em;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #e57373;
+  box-shadow: 0 1px 0 0 #e57373;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #e57373;
+  box-shadow: 0 1px 0 0 #e57373;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #e57373;
+  box-shadow: 0 1px 0 0 #e57373;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #e57373;
+}
+
+#nav-logo {
+  height: 40px;
+  margin: 10px 0 0 10px !important;
+}
+
+nav a {
+  font-size: 20px !important;
+  font-weight: 200;
 }

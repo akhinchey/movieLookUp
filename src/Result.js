@@ -35,10 +35,9 @@ class Result extends Component {
                 <p>
                   Year: {this.props.object.Year}
                 </p>
-                <a onClick={this.fetchMovieInfo.bind(this)} href="{this.props.object.title}">more info</a>
               </div>
               <div className="card-action">
-                <a href="#">This is a link</a>
+                <a onClick={this.fetchMovieInfo.bind(this)} href="{this.props.object.title}">more info</a>
               </div>
             </div>
           </div>

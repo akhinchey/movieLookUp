@@ -5,9 +5,7 @@ import Results from './Results';
 import './App.css';
 
 class Main extends Component {
-
-
-
+  
   render() {
     return (
       <div>
