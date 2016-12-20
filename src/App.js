@@ -7,7 +7,6 @@ class App extends Component {
 
   constructor(){
     super();
-    // debugger;
     this.state = {
       movieList: [],
       renderComponent: "Main",

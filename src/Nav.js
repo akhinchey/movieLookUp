@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 class Nav extends Component {
 
-  goHomeYoureDrunk(){
-
+  goBack(event){
+    event.preventDefault();
+    this.props.navHandler('Main')
   }
 
   render(){
@@ -12,7 +13,7 @@ class Nav extends Component {
         <div className="nav-wrapper">
           <a href="#" className="brand-logo"><img src='/logo.png' id='nav-logo' alt='logo'/></a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><a href="back">back</a></li>
+            <li onClick={this.goBack.bind(this)}><a href="">back</a></li>
           </ul>
         </div>
       </nav>

@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
+import Nav from './Nav';
 
 class MovieInfo extends Component {
-  goBack(){
-    this.props.navHandler('Main')
-  }
-
   render() {
     return(
-      <div className='container'>
-        <a href='#' onClick={this.goBack.bind(this)}>go back</a>
-        <h2>{this.props.thisMovie.Title}</h2>
-        <span>{this.props.thisMovie.Rated} | </span>
-        <span>{this.props.thisMovie.Runtime} | </span>
-        <span>{this.props.thisMovie.Country} | </span>
-        <span>{this.props.thisMovie.Genre} | </span>
-        <span>{this.props.thisMovie.Year}</span>
-        <ul>
-          <li className='row'>
-            <img className='col m6 s12' src={this.props.thisMovie.Poster} alt='poster'/>
-            <ul className='col m6 s12'>
-              <li>Actors: {this.props.thisMovie.Actors}</li>
-              <li>Awards: {this.props.thisMovie.Awards}</li>
-              <li>Director: {this.props.thisMovie.Director}</li>
-              <li>Language: {this.props.thisMovie.Language}</li>
-              <li>Release date:{this.props.thisMovie.Released}</li>
-              <li>Writers: {this.props.thisMovie.Writer}</li>
-              <li>
-                <h5>Plot:</h5>
-                <p>{this.props.thisMovie.Plot}</p>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      <div>
+        <Nav navHandler={this.props.navHandler}/>
+        <div className='container'>
+          <h2>{this.props.thisMovie.Title}</h2>
+          <span>{this.props.thisMovie.Rated}</span><span>|</span>
+          <span>{this.props.thisMovie.Runtime}</span><span>|</span>
+          <span>{this.props.thisMovie.Country}</span><span>|</span>
+          <span>{this.props.thisMovie.Genre}</span><span>|</span>
+          <span>{this.props.thisMovie.Year}</span>
+          <ul>
+            <li className='row'>
+              <div className='col m4 s12'>
+                <img className='col m10 s12' src={this.props.thisMovie.Poster} alt='poster'/>
+              </div>
+              <ul className='col m8 s12 info'>
+                <li><strong>Actors:</strong> {this.props.thisMovie.Actors}</li>
+                <li><strong>Awards:</strong> {this.props.thisMovie.Awards}</li>
+                <li><strong>Director:</strong> {this.props.thisMovie.Director}</li>
+                <li><strong>Language:</strong> {this.props.thisMovie.Language}</li>
+                <li><strong>Release date:</strong>{this.props.thisMovie.Released}</li>
+                <li><strong>Writers:</strong> {this.props.thisMovie.Writer}</li>
+              </ul>
+            </li>
+            <h3>Plot:</h3>
+            <p className="plot">{this.props.thisMovie.Plot}</p>
+          </ul>
+        </div>
       </div>
     )
   }
