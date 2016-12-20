@@ -17,8 +17,8 @@ class MovieInfo extends Component {
         <span>{this.props.thisMovie.Year}</span>
         <ul>
           <li className='row'>
-            <img className='col m6' src={this.props.thisMovie.Poster} alt='poster'/>
-            <ul className='col m6'>
+            <img className='col m6 s12' src={this.props.thisMovie.Poster} alt='poster'/>
+            <ul className='col m6 s12'>
               <li>Actors: {this.props.thisMovie.Actors}</li>
               <li>Awards: {this.props.thisMovie.Awards}</li>
               <li>Director: {this.props.thisMovie.Director}</li>

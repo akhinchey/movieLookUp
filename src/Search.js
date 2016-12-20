@@ -28,10 +28,12 @@ class Search extends Component {
   render(){
     return(
       <div className="row">
-        <form onChange={this.fetchMovies.bind(this)} className="col s12 m4">
-          <input ref="query" type="text" />
-          <br />
-          <input type="submit" />
+        <form onChange={this.fetchMovies.bind(this)} className="col s12 m4 offset-m4 search-form">
+          <div className="input-field">
+            <i className="material-icons prefix">search</i>
+            <input ref="query" id='search-input' type="text" className='validate'/>
+            <label htmlFor="search-input">Search movies by title</label>
+          </div>
         </form>
       </div>
       )
