@@ -3,24 +3,33 @@
   padding: 15px;
 }
 
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Josefin Sans', sans-serif !important;
+}
+
 .card {
   width: 300px;
 }
 
 .search-form {
-  margin-top: 20%;
+  margin-top: 10px;
   border: solid 2px #e57373;
   padding-left: 25px;
+  padding-top: 35px;
   border-radius: 50px;;
 }
 
 /* label color */
   .input-field label {
     color: #000;
+    font-size: 1.5em;
   }
   /* label focus color */
   .input-field input[type=text]:focus + label {
-    color: #e57373  ;
+    color: #000  ;
+    font-size: 1.1em;
   }
   /* label underline focus color */
   .input-field input[type=text]:focus {
@@ -43,6 +52,11 @@
   }
 
 #nav-logo {
-  height: 50px;
-  margin: 5px 0 0 10px !important;
+  height: 40px;
+  margin: 10px 0 0 10px !important;
+}
+
+nav a {
+  font-size: 20px !important;
+  font-weight: 200;
 }
