@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import Nav from './Nav';
-import Search from './Search';
-import Results from './Results';
-import Result from './Result';
 import Main from './Main';
 import MovieInfo from './MovieInfo'
 import './App.css';
@@ -14,8 +10,15 @@ class App extends Component {
     // debugger;
     this.state = {
       movieList: [],
-      renderComponent: "Main"
+      renderComponent: "Main",
+      thisMovie: {}
     }
+  }
+
+  updateThisMovie(movie) {
+    this.setState({
+      thisMovie: movie
+    });
   }
 
   updateMovies(movies) {
@@ -34,9 +37,10 @@ class App extends Component {
     let comp = this.state.renderComponent;
 
     if(comp === 'Main'){
-      return (<Main updateMovies={this.updateMovies.bind(this)} navHandler={this.navHandler.bind(this)}  movieList={this.state.movieList}/>);
+      return (<Main updateMovies={this.updateMovies.bind(this)} navHandler={this.navHandler.bind(this)}  movieList={this.state.movieList}
+      updateThisMovie={this.updateThisMovie.bind(this)}/>);
     } else {
-      return (<MovieInfo />);
+      return (<MovieInfo thisMovie={this.state.thisMovie} navHandler={this.navHandler.bind(this)}/>)
     }
   }
 }

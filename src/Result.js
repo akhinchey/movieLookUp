@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
-import MovieInfo from './MovieInfo'
-import $ from 'jquery';
-
+import $ from 'jquery'
 class Result extends Component {
 
   fetchMovieInfo(event) {
     event.preventDefault();
-    console.log('hi');
-    this.props.navHandler("MovieInfo");
+    var url = 'https://www.omdbapi.com/?i=' + this.props.object.imdbID + '&plot=full';
+
+    $.ajax({
+      url: url,
+      method: 'get'
+    }).done( function(response) {
+      this.props.updateThisMovie(response);
+      this.props.navHandler("MovieInfo");
+    }.bind(this));
   }
 
   render() {
+    let posterUrl = this.props.object.Poster;
+    if(posterUrl === 'N/A'){
+      posterUrl = 'http://sd.keepcalm-o-matic.co.uk/i/keep-calm-poster-not-found.png'
+    }
     return(
         <div className="result-card">
           <div className="col s12 m7">
             <div className="card">
               <div className="card-image">
-                <img src={this.props.object.Poster} />
-                <span className="card-title">Card Title</span>
+                <img src={posterUrl} alt='movie poster' />
               </div>
               <div className="card-content">
-                <p>
-                  Title: {this.props.object.Title}
-                </p>
+                <span className="card-title">{this.props.object.Title}</span>
                 <p>
                   Type: {this.props.object.Type}
                 </p>

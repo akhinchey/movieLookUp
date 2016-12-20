@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
+var page = 1;
 
 class Search extends Component {
 
   fetchMovies(event) {
     event.preventDefault();
-    var url = 'https://www.omdbapi.com/?s=' + this.refs.query.value.split(" ").join("+");
+    var url = 'https://www.omdbapi.com/?s=' + this.refs.query.value.split(" ").join("+") + '&page=' + page;
+    console.log(url);
     $.ajax({
       url: url,
       method: 'get'
