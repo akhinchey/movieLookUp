@@ -3,6 +3,10 @@
   padding: 15px;
 }
 
+.material-icons {
+  user-select: none;
+}
+
 body {
   height: 100%;
   width: 100%;
@@ -22,7 +26,7 @@ body {
 }
 
 .search-form:hover {
-  border: solid 2px rgba(0,0,0,0.5);
+  border: solid 2px rgba(0,0,0,0.7);
 }
 
 ul .info li, span, .plot {
@@ -41,6 +45,8 @@ span {
 strong {
   font-weight: 600;
   font-size: 25px;
+  margin-right: 15px;
+  line-height: 40px;
 }
 /* label color */
 .input-field label {

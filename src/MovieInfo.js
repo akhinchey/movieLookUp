@@ -14,11 +14,11 @@ class MovieInfo extends Component {
           <span>{this.props.thisMovie.Genre}</span><span>|</span>
           <span>{this.props.thisMovie.Year}</span>
           <ul>
-            <li className='row'>
+            <li className='row valign-wrapper'>
               <div className='col m4 s12'>
                 <img className='col m10 s12' src={this.props.thisMovie.Poster} alt='poster'/>
               </div>
-              <ul className='col m8 s12 info'>
+              <ul className='col m8 s12 info valign'>
                 <li><strong>Actors:</strong> {this.props.thisMovie.Actors}</li>
                 <li><strong>Awards:</strong> {this.props.thisMovie.Awards}</li>
                 <li><strong>Director:</strong> {this.props.thisMovie.Director}</li>
