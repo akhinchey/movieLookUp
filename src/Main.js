@@ -7,15 +7,25 @@ import './App.css';
 class Main extends Component {
 
   render() {
+    const {
+      navHandler,
+      updatePage,
+      updateMovies,
+      currentSearch
+    } = this.props //deconstructing variables es6
+
     return (
       <div>
-        <Nav navHandler={this.props.navHandler} />
-        <Search updatePage={this.props.updatePage} updateMovies={this.props.updateMovies} currentSearch={this.props.currentSearch} />
+        <Nav navHandler={navHandler} />
+        <Search
+          updatePage={updatePage}
+          updateMovies={updateMovies}
+          currentSearch={currentSearch}
+        />
         <div className='errors'>
 
         </div>
-        <Results updatePage={this.props.updatePage} page={this.props.page} navHandler={this.props.navHandler} movieList={this.props.movieList}
-        updateThisMovie={this.props.updateThisMovie} currentSearch={this.props.currentSearch} updateMovies={this.props.updateMovies}/>
+        <Results {...this.props} />
       </div>
     );
   }

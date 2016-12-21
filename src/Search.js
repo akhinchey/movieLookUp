@@ -15,7 +15,6 @@ class Search extends Component {
   fetchMovies(event) {
     event.preventDefault();
     this.props.updatePage(2);
-    // reset page
     var searchText = this.refs.query.value
 
     if(searchText.length > 1){

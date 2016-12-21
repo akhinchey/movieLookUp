@@ -4,8 +4,7 @@ import $ from 'jquery';
 
 class Results extends Component {
 
-  somefunction(){
-      //make ajax
+  fetchMoreMovies(){
       var searchText = this.props.currentSearch;
       var url = 'https://www.omdbapi.com/?s=' + searchText.split(" ").join("+") + '&page=' + this.props.page.toString();
 
@@ -16,17 +15,12 @@ class Results extends Component {
         if (response.Response === "True") {
           let movies = this.props.movieList.concat(response.Search);
           this.props.updateMovies(movies, searchText);
-          console.log(this.props.page);
           this.props.updatePage(this.props.page + 1)
           $('.errors').empty();
         } else {
-          this.props.updateMovies([]);
-          $('.errors').text(response.Error);
+          $('.more').hide();
         }
       }.bind(this));
-      //concat movies
-      // update movies
-      // increment page
   }
 
   render() {
@@ -38,7 +32,7 @@ class Results extends Component {
           return <Result navHandler={this.props.navHandler} updateThisMovie={this.props.updateThisMovie} object={obj} key={i}/>
         }.bind(this))
         }
-      <input type='button' onClick={this.somefunction.bind(this)} value="load more"/>
+      <input className="more" type='button' onClick={this.fetchMoreMovies.bind(this)} value="load more"/>
       </main>
     )
   }
