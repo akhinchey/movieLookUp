@@ -42,14 +42,33 @@ class App extends Component {
   }
 
   render() {
-    let comp = this.state.renderComponent;
+    const {
+      renderComponent,
+      page,
+      movieList,
+      currentSearch,
+      thisMovie
+    } = this.state
 
-    if(comp === 'Main'){
-      return (<Main page={this.state.page} updatePage={this.updatePage.bind(this)} updateMovies={this.updateMovies.bind(this)} navHandler={this.navHandler.bind(this)}  movieList={this.state.movieList}
-      currentSearch={this.state.currentSearch}
-      updateThisMovie={this.updateThisMovie.bind(this)}/>);
+    if(renderComponent === 'Main'){
+      return (
+        <Main
+          page={page}
+          updatePage={this.updatePage.bind(this)}
+          updateMovies={this.updateMovies.bind(this)}
+          navHandler={this.navHandler.bind(this)}
+          movieList={movieList}
+          currentSearch={currentSearch}
+          updateThisMovie={this.updateThisMovie.bind(this)}
+        />
+      );
     } else {
-      return (<MovieInfo thisMovie={this.state.thisMovie} navHandler={this.navHandler.bind(this)}/>)
+      return (
+        <MovieInfo
+          thisMovie={thisMovie}
+          navHandler={this.navHandler.bind(this)}
+        />
+      )
     }
   }
 }
