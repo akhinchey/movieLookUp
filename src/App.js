@@ -11,13 +11,20 @@ class App extends Component {
       movieList: [],
       renderComponent: "Main",
       thisMovie: {},
-      currentSearch: ""
+      currentSearch: "",
+      page: 2
     }
   }
 
   updateThisMovie(movie) {
     this.setState({
       thisMovie: movie
+    });
+  }
+
+  updatePage(newPage){
+    this.setState({
+      page: newPage
     });
   }
 
@@ -38,7 +45,7 @@ class App extends Component {
     let comp = this.state.renderComponent;
 
     if(comp === 'Main'){
-      return (<Main updateMovies={this.updateMovies.bind(this)} navHandler={this.navHandler.bind(this)}  movieList={this.state.movieList}
+      return (<Main page={this.state.page} updatePage={this.updatePage.bind(this)} updateMovies={this.updateMovies.bind(this)} navHandler={this.navHandler.bind(this)}  movieList={this.state.movieList}
       currentSearch={this.state.currentSearch}
       updateThisMovie={this.updateThisMovie.bind(this)}/>);
     } else {

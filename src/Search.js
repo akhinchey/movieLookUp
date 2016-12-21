@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
-var page = 1;
-
 class Search extends Component {
 
   componentDidMount(){
     if (this.props.currentSearch.length > 1 ) {
       $("#search-input").val(this.props.currentSearch);
       $('.form-label').addClass("active");
+      $('.search-form').css('margin-top', '30px');
+
     }
   }
 
   fetchMovies(event) {
     event.preventDefault();
+    this.props.updatePage(2);
+    // reset page
     var searchText = this.refs.query.value
 
     if(searchText.length > 1){
@@ -25,7 +27,7 @@ class Search extends Component {
         $('.search-form').css('margin-top', '30px');
       }
 
-      var url = 'https://www.omdbapi.com/?s=' + searchText.split(" ").join("+") + '&page=' + page;
+      var url = 'https://www.omdbapi.com/?s=' + searchText.split(" ").join("+");
 
       $.ajax({
         url: url,
@@ -46,7 +48,6 @@ class Search extends Component {
   render(){
     return(
       <div className="row">
-        <h1 id="test">heyhey</h1>
         <form onChange={this.fetchMovies.bind(this)} className="col s12 m6 offset-m3 search-form">
           <div className="input-field col s10 offset-s1">
             <i className="material-icons prefix">search</i>
