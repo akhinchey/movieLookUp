@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router, Link } from 'react-router-dom';
 import $ from 'jquery'
 class Result extends Component {
 
@@ -37,7 +38,9 @@ class Result extends Component {
                 </p>
               </div>
               <div className="card-action">
-                <a onClick={this.fetchMovieInfo.bind(this)} href="{this.props.object.title}">more info</a>
+                <Link to={this.props.object.Title}>
+                  more info
+                </Link>
               </div>
             </div>
           </div>

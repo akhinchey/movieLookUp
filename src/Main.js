@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import Search from './Search';
 import Results from './Results';
+import Route from 'react-router-dom';
+import MovieInfo from './MovieInfo'
 import './App.css';
 
 class Main extends Component {
@@ -26,6 +28,7 @@ class Main extends Component {
 
         </div>
         <Results {...this.props} />
+        <Route path="/:movieTitle" component={MovieInfo}/>
       </div>
     );
   }

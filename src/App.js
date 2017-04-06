@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Main from './Main';
+import { BrowserRouter as Router} from 'react-router-dom'
 import MovieInfo from './MovieInfo'
 import './App.css';
 
@@ -48,10 +49,10 @@ class App extends Component {
       movieList,
       currentSearch,
       thisMovie
-    } = this.state
+    } = this.state;
 
-    if(renderComponent === 'Main'){
-      return (
+    return (
+      <Router>
         <Main
           page={page}
           updatePage={this.updatePage.bind(this)}
@@ -60,16 +61,27 @@ class App extends Component {
           movieList={movieList}
           currentSearch={currentSearch}
           updateThisMovie={this.updateThisMovie.bind(this)}
-        />
-      );
-    } else {
-      return (
-        <MovieInfo
-          thisMovie={thisMovie}
-          navHandler={this.navHandler.bind(this)}
-        />
-      )
-    }
+          />
+      </Router>
+    )
+    // if(renderComponent === 'Main'){
+    //   return (
+    //     <Router>
+    //       <Main
+
+    //         />
+    //     </Router>
+    //   );
+    // } else {
+    //   return (
+    //     <Router>
+    //       <MovieInfo
+    //         thisMovie={thisMovie}
+    //         navHandler={this.navHandler.bind(this)}
+    //       />
+    //   </Router>
+    //   )
+    // }
   }
 }
 
