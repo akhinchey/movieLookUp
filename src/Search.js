@@ -8,7 +8,6 @@ class Search extends Component {
       $("#search-input").val(this.props.currentSearch);
       $('.form-label').addClass("active");
       $('.search-form').css('margin-top', '30px');
-
     }
   }
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Main from './Main';
-import { BrowserRouter as Router} from 'react-router-dom'
+import Home from './Home';
+import Nav from './Nav';
+import Results from './Results'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import MovieInfo from './MovieInfo'
 import './App.css';
 
@@ -52,16 +54,40 @@ class App extends Component {
     } = this.state;
 
     return (
+      // <Router>
+      //   <Main
+      //     page={page}
+          // updatePage={this.updatePage.bind(this)}
+          // updateMovies={this.updateMovies.bind(this)}
+      //     navHandler={this.navHandler.bind(this)}
+      //     movieList={movieList}
+      //     currentSearch={currentSearch}
+      //     updateThisMovie={this.updateThisMovie.bind(this)}
+      //     />
+      // </Router>
       <Router>
-        <Main
-          page={page}
-          updatePage={this.updatePage.bind(this)}
-          updateMovies={this.updateMovies.bind(this)}
-          navHandler={this.navHandler.bind(this)}
-          movieList={movieList}
-          currentSearch={currentSearch}
-          updateThisMovie={this.updateThisMovie.bind(this)}
+        <div>
+          <Nav/>
+          <Route path="/" render={() => {
+            return(
+              <Home
+                updatePage={this.updatePage.bind(this)}
+                updateMovies={this.updateMovies.bind(this)}
+                currentSearch={currentSearch}
+              />
+            )}}
           />
+          <Route path="/movies" render={() => {
+            return(
+              <Results
+                updatePage={this.updatePage.bind(this)}
+                updateMovies={this.updateMovies.bind(this)}
+                currentSearch={currentSearch}
+              />
+            )}
+          }
+          />
+        </div>
       </Router>
     )
     // if(renderComponent === 'Main'){

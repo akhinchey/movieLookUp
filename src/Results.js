@@ -15,7 +15,7 @@ class Results extends Component {
         if (response.Response === "True") {
           let movies = this.props.movieList.concat(response.Search);
           this.props.updateMovies(movies, searchText);
-          this.props.updatePage(this.props.page + 1)
+          this.props.updatePage(this.props.page + 1);
           $('.errors').empty();
         } else {
           $('.more').hide();
