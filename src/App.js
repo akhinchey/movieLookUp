@@ -3,7 +3,7 @@ import Home from './Home';
 import Nav from './Nav';
 import Search from './Search'
 import Results from './Results'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MovieInfo from './MovieInfo'
 import './App.css';
 
@@ -67,11 +67,13 @@ class App extends Component {
           <Nav/>
           <Route path="/" exact={true} render={() => {
             return(
-              <Home
-                updatePage={this.updatePage.bind(this)}
-                updateMovies={this.updateMovies.bind(this)}
-                currentSearch={currentSearch}
-              />
+              <Link style={{color: 'black'}} to='/movies'>
+                <Search
+                  updatePage={this.updatePage.bind(this)}
+                  updateMovies={this.updateMovies.bind(this)}
+                  currentSearch={currentSearch}
+                />
+              </Link>
             )}}
           />
           <Route exact={true} path="/movies" render={() => {
@@ -83,6 +85,7 @@ class App extends Component {
                   currentSearch={currentSearch}
                 />
                 <Results
+                  page={page}
                   updatePage={this.updatePage.bind(this)}
                   updateMovies={this.updateMovies.bind(this)}
                   currentSearch={currentSearch}

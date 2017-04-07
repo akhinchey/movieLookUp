@@ -4,10 +4,13 @@ import $ from 'jquery';
 class Search extends Component {
 
   componentDidMount(){
+    if(window.location.pathname === '/movies'){
+      document.querySelector('.search-form input').focus();
+    }
     if (this.props.currentSearch.length > 1 ) {
+      $(".search-form").css('margin-top','5%');
       $("#search-input").val(this.props.currentSearch);
       $('.form-label').addClass("active");
-      $('.search-form').css('margin-top', '30px');
     }
   }
 
@@ -45,7 +48,7 @@ class Search extends Component {
   render(){
     return(
       <div className="row">
-        <form onChange={this.fetchMovies.bind(this)} className="col s12 m6 offset-m3 search-form">
+        <form onChange={this.fetchMovies.bind(this)} className="col m6 offset-m3 m6 offset-m3 s10 offset-s1 search-form">
           <div className="input-field col s10 offset-s1">
             <i className="material-icons prefix">search</i>
             <input ref="query" id='search-input' type="text" className='validate'/>

@@ -17,23 +17,15 @@ body {
   width: 300px;
 }
 
-.welcome {
-  font-size: 1.3em;
-  padding: 20% 20% 0 20%;
-  color: darkgrey;
-  font-family: monospace;
-  font-weight: 200;
-}
-
 .search-form {
-  /*margin-top: 20%;*/
+  margin-top: 35%;
   border: solid 2px #e57373;
-  padding-left: 25px;
-  padding-top: 35px;
-  border-radius: 50px;;
+  border-radius: 50px;
+  transition: margin 1s;
 }
 
-.search-form:hover {
+.search-form:focus {
+  margin-top: 5%;
   border: solid 2px rgba(0,0,0,0.7);
 }
 
