@@ -25,15 +25,19 @@ class Results extends Component {
 
   render() {
     let movies = this.props.movieList;
-
-    return(
-      <main className='center-align row'>
-        {movies.map( function(obj, i) {
-          return <Result navHandler={this.props.navHandler} updateThisMovie={this.props.updateThisMovie} object={obj} key={i}/>
-        }.bind(this))
+    if(movies){
+      return(
+        <main className='center-align row'>
+          {movies.map( function(obj, i) {
+            return <Result updateThisMovie={this.props.updateThisMovie} object={obj} key={i}/>
+          }.bind(this))
         }
-      <input className="more" type='button' onClick={this.fetchMoreMovies.bind(this)} value="load more"/>
-      </main>
+        <input className="more" type='button' onClick={this.fetchMoreMovies.bind(this)} value="load more"/>
+        </main>
+      )
+    }
+    return (
+      <div></div>
     )
   }
 }

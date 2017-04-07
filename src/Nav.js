@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Nav extends Component {
 
@@ -11,9 +12,14 @@ class Nav extends Component {
     return(
       <nav>
         <div className="nav-wrapper">
-          <a href="#" className="brand-logo"><img src='/logo.png' id='nav-logo' alt='logo'/></a>
+
+          <Link to='/'>
+            <div className="brand-logo"><img src='/logo.png' id='nav-logo' alt='logo'/></div>
+          </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li onClick={this.goBack.bind(this)}><a href="">back</a></li>
+            <Link to="/movies">
+              search
+            </Link>
           </ul>
         </div>
       </nav>

@@ -20,7 +20,6 @@ class Search extends Component {
 
       let formBoxTop = $('.search-form').offset().top;
 
-
       if( formBoxTop > 145){
         $('.search-form').css('margin-top', '30px');
       }

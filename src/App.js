@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Home from './Home';
 import Nav from './Nav';
+import Search from './Search'
 import Results from './Results'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import MovieInfo from './MovieInfo'
@@ -11,11 +12,14 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
+      // movie list is list of results after a search
       movieList: [],
-      renderComponent: "Main",
+      // page number of results
+      page: 2,
+      // particular movie to display info
       thisMovie: {},
-      currentSearch: "",
-      page: 2
+      // current search phrase
+      currentSearch: ""
     }
   }
 
@@ -38,15 +42,8 @@ class App extends Component {
     });
   }
 
-  navHandler(component){
-    this.setState({
-      renderComponent: component
-    });
-  }
-
   render() {
     const {
-      renderComponent,
       page,
       movieList,
       currentSearch,
@@ -68,7 +65,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav/>
-          <Route path="/" render={() => {
+          <Route path="/" exact={true} render={() => {
             return(
               <Home
                 updatePage={this.updatePage.bind(this)}
@@ -77,16 +74,29 @@ class App extends Component {
               />
             )}}
           />
-          <Route path="/movies" render={() => {
+          <Route exact={true} path="/movies" render={() => {
             return(
-              <Results
-                updatePage={this.updatePage.bind(this)}
-                updateMovies={this.updateMovies.bind(this)}
-                currentSearch={currentSearch}
-              />
+              <div>
+                <Search
+                  updatePage={this.updatePage.bind(this)}
+                  updateMovies={this.updateMovies.bind(this)}
+                  currentSearch={currentSearch}
+                />
+                <Results
+                  updatePage={this.updatePage.bind(this)}
+                  updateMovies={this.updateMovies.bind(this)}
+                  currentSearch={currentSearch}
+                  movieList={movieList}
+                  updateThisMovie={this.updateThisMovie.bind(this)}
+                />
+              </div>
             )}
           }
-          />
+          >
+          </Route>
+          <Route path="/movies/:movieId" render={(movieId)=> {
+            return <MovieInfo movieId={movieId}/>
+          }}/>
         </div>
       </Router>
     )

@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
-import Nav from './Nav';
+import $ from 'jquery';
 
 class MovieInfo extends Component {
+  constructor(){
+    super();
+    this.state = {
+      thisMovie: {}
+    }
+  }
+
+  componentDidMount(){
+    this.fetchMovieInfo()
+  }
+
+  fetchMovieInfo() {
+    var url = 'https://www.omdbapi.com/?i=' + this.props.movieId.match.params.movieId + '&plot=full';
+
+    $.ajax({
+      url: url,
+      method: 'get'
+    }).done( function(response) {
+      // this.props.updateThisMovie(response);
+      this.setState({
+        thisMovie: response
+      })
+    }.bind(this));
+  }
+
   render() {
     const {
       Title,
@@ -18,13 +43,10 @@ class MovieInfo extends Component {
       Released,
       Writer,
       Plot
-    } = this.props.thisMovie
-
-    const { navHandler } = this.props
+    } = this.state.thisMovie
 
     return(
       <div>
-        <Nav navHandler={navHandler}/>
         <div className='container'>
           <h2>{Title}</h2>
           <span>{Rated}</span><span>|</span>
