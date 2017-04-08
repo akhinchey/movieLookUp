@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import Result from './Result';
-// import ReactDOM from 'react-dom';
 
 class Results extends Component {
-  // handleScroll(ev) {
-  //     console.log("Scrolling!");
-  // }
-  // componentDidMount() {
-  //     const list = ReactDOM.findDOMNode(this.refs.list);
-  //     list.addEventListener('scroll', this.handleScroll.bind(this));
-  // }
-  // componentWillUnmount() {
-  //     const list = ReactDOM.findDOMNode(this.refs.list);
-  //     list.removeEventListener('scroll', this.handleScroll.bind(this));
-  // }
+  handleScroll(ev) {
+    if((window.scrollY + window.innerHeight)/document.body.clientHeight >= 1){
+      this.fetchMoreMovies();
+    }
+  }
+
+  componentDidMount() {
+      window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll.bind(this));
+  }
 
   fetchMoreMovies(){
       var searchText = this.props.currentSearch;
@@ -34,12 +35,11 @@ class Results extends Component {
   render() {
     let movies = this.props.movieList;
     return(
-      <div className='center-align row' ref="list">
+      <div className='center-align row' onScroll={this.handleScroll.bind(this)}>
         {movies.map( function(obj, i) {
           return <Result updateThisMovie={this.props.updateThisMovie} object={obj} key={i}/>
         }.bind(this))
       }
-      <input onClick={this.fetchMoreMovies.bind(this)} type="button" value="load more"/>
     </div>
     )
   }
