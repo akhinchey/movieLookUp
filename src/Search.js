@@ -18,18 +18,6 @@ class Search extends Component {
     }
   }
 
-  // returnInput(){
-  //   if(this.props.currentSearch === ''){
-  //     return(
-  //       <input ref="query" id='search-input' type="text" className='validate' onChange={this.fetchMovies.bind(this)}/>
-  //     )
-  //   } else {
-  //     return(
-  //       <input ref="query" id='search-input' type="text" className='validate' value={this.props.currentSearch} onChange={this.fetchMovies.bind(this)}/>
-  //     )
-  //   }
-  // }
-
   fetchMovies() {
     this.setState({
       inputClass: "search-active"
@@ -52,18 +40,6 @@ class Search extends Component {
       .catch((error) => {
         console.error(error);
       });
-      // $.ajax({
-      //   url: url,
-      //   method: 'get'
-      // }).done( function(response) {
-      //   if (response.Response === "True") {
-      //     this.props.updateMovies(response.Search, searchText);
-      //     // $('.errors').empty();
-      //   } else {
-      //     this.props.updateMovies([]);
-      //     // $('.errors').text(response.Error);
-      //   }
-      // }.bind(this));
     }
   }
 
@@ -75,6 +51,7 @@ class Search extends Component {
             <i className="material-icons prefix">search</i>
             <input ref="query" id='search-input' type="text" className='validate' value={this.props.currentSearch} onChange={this.fetchMovies.bind(this)}/>
             <label htmlFor="search-input" className={`form-label ${this.state.labelClass}`}>Search movies by title</label>
+            <i className="material-icons prefix" onClick={() => {this.props.updateMovies([],"")}}>clear</i>
           </div>
         </form>
       </div>

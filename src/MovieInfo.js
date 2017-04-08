@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
 class MovieInfo extends Component {
   constructor(){
@@ -16,15 +16,16 @@ class MovieInfo extends Component {
   fetchMovieInfo() {
     var url = 'https://www.omdbapi.com/?i=' + this.props.movieId.match.params.movieId + '&plot=full';
 
-    $.ajax({
-      url: url,
-      method: 'get'
-    }).done( function(response) {
-      // this.props.updateThisMovie(response);
+    fetch(url)
+    .then((response) => response.json())
+    .then((responseJson) => {
       this.setState({
-        thisMovie: response
+        thisMovie: responseJson
       })
-    }.bind(this));
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   render() {
@@ -48,6 +49,9 @@ class MovieInfo extends Component {
     return(
       <div>
         <div className='container'>
+          <Link to='/'>
+            <i className="material-icons" style={{transform: 'rotate(180deg)'}}>trending_flat</i> back to search results
+          </Link>
           <h2>{Title}</h2>
           <span>{Rated}</span><span>|</span>
           <span>{Runtime}</span><span>|</span>
