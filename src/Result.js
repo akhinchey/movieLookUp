@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Router, Link } from 'react-router-dom';
-import $ from 'jquery'
+import { Link } from 'react-router-dom';
+
 class Result extends Component {
 
   render() {
     let posterUrl = this.props.object.Poster;
-    
+
     if(posterUrl === 'N/A'){
       posterUrl = 'http://sd.keepcalm-o-matic.co.uk/i/keep-calm-poster-not-found.png'
     }

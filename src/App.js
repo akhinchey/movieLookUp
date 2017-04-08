@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Home from './Home';
 import Nav from './Nav';
 import Search from './Search'
 import Results from './Results'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import MovieInfo from './MovieInfo'
 import './App.css';
 
@@ -16,8 +15,6 @@ class App extends Component {
       movieList: [],
       // page number of results
       page: 2,
-      // particular movie to display info
-      thisMovie: {},
       // current search phrase
       currentSearch: ""
     }
@@ -29,9 +26,15 @@ class App extends Component {
     });
   }
 
-  updatePage(newPage){
+  updatePage(newPage) {
     this.setState({
       page: newPage
+    });
+  }
+
+  updateSearch(query) {
+    this.setState({
+      currentSearch: query
     });
   }
 
@@ -46,43 +49,21 @@ class App extends Component {
     const {
       page,
       movieList,
-      currentSearch,
-      thisMovie
+      currentSearch
     } = this.state;
 
     return (
-      // <Router>
-      //   <Main
-      //     page={page}
-          // updatePage={this.updatePage.bind(this)}
-          // updateMovies={this.updateMovies.bind(this)}
-      //     navHandler={this.navHandler.bind(this)}
-      //     movieList={movieList}
-      //     currentSearch={currentSearch}
-      //     updateThisMovie={this.updateThisMovie.bind(this)}
-      //     />
-      // </Router>
       <Router>
         <div>
           <Nav/>
-          <Route path="/" exact={true} render={() => {
-            return(
-              <Link style={{color: 'black'}} to='/movies'>
-                <Search
-                  updatePage={this.updatePage.bind(this)}
-                  updateMovies={this.updateMovies.bind(this)}
-                  currentSearch={currentSearch}
-                />
-              </Link>
-            )}}
-          />
-          <Route exact={true} path="/movies" render={() => {
+          <Route exact={true} path="/" render={() => {
             return(
               <div>
                 <Search
                   updatePage={this.updatePage.bind(this)}
                   updateMovies={this.updateMovies.bind(this)}
                   currentSearch={currentSearch}
+                  updateSearch={this.updateSearch.bind(this)}
                 />
                 <Results
                   page={page}
@@ -103,24 +84,6 @@ class App extends Component {
         </div>
       </Router>
     )
-    // if(renderComponent === 'Main'){
-    //   return (
-    //     <Router>
-    //       <Main
-
-    //         />
-    //     </Router>
-    //   );
-    // } else {
-    //   return (
-    //     <Router>
-    //       <MovieInfo
-    //         thisMovie={thisMovie}
-    //         navHandler={this.navHandler.bind(this)}
-    //       />
-    //   </Router>
-    //   )
-    // }
   }
 }
 

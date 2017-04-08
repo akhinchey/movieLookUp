@@ -17,16 +17,23 @@ body {
   width: 300px;
 }
 
-.search-form {
-  margin-top: 35%;
-  border: solid 2px #e57373;
-  border-radius: 50px;
-  transition: margin 1s;
+.welcome {
+  margin-top: 20vh;
+  font-size: 1.2em;
+  text-align: center;
 }
 
-.search-form:focus {
-  margin-top: 5%;
-  border: solid 2px rgba(0,0,0,0.7);
+.search-form {
+  margin-top: 40vh;
+  border: solid 2px #e57373;
+  border-radius: 50px;
+  transition: margin .07s ease;
+}
+
+.search-active {
+  margin-top: 5vh;
+  /*border: solid 2px rgba(0,0,0,0.7);*/
+  transition: margin-top 1s;
 }
 
 ul .info li, span, .plot {
