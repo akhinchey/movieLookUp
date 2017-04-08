@@ -17,7 +17,7 @@ class Nav extends Component {
             <div className="brand-logo"><img src='/logo.png' id='nav-logo' alt='logo'/></div>
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <Link to="/movies">
+            <Link to="/">
               search
             </Link>
           </ul>
