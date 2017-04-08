@@ -10,7 +10,16 @@ class Search extends Component {
   }
 
   componentDidMount(){
-    if(this.props.currentSearch !== "") {
+    this.managePosition();
+  }
+
+  managePosition(){
+    if(this.props.currentSearch === "") {
+      this.setState({
+        inputClass: "",
+        labelClass: ""
+      })
+    }else {
       this.setState({
         inputClass: "search-active",
         labelClass: "active"
@@ -51,7 +60,7 @@ class Search extends Component {
             <i className="material-icons prefix">search</i>
             <input ref="query" id='search-input' type="text" className='validate' value={this.props.currentSearch} onChange={this.fetchMovies.bind(this)}/>
             <label htmlFor="search-input" className={`form-label ${this.state.labelClass}`}>Search movies by title</label>
-            <i className="material-icons prefix" onClick={() => {this.props.updateMovies([],"")}}>clear</i>
+            <i className="material-icons prefix clear-search" onClick={() => {this.props.updateMovies([],"")}}>clear</i>
           </div>
         </form>
       </div>

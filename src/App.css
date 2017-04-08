@@ -95,3 +95,8 @@ nav a {
   font-size: 20px !important;
   font-weight: 200;
 }
+
+.clear-search:hover {
+  color: black !important;
+  cursor: pointer;
+}
