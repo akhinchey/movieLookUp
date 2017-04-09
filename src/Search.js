@@ -1,57 +1,66 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 
 class Search extends Component {
-
-  componentDidMount(){
-    if (this.props.currentSearch.length > 1 ) {
-      $("#search-input").val(this.props.currentSearch);
-      $('.form-label').addClass("active");
-      $('.search-form').css('margin-top', '30px');
-
+  constructor(){
+    super();
+    this.state = {
+      inputClass: '',
+      labelClass: ''
     }
   }
 
-  fetchMovies(event) {
-    event.preventDefault();
+  componentDidMount(){
+    this.managePosition();
+  }
+
+  managePosition(){
+    if(this.props.currentSearch === "") {
+      this.setState({
+        inputClass: "",
+        labelClass: ""
+      })
+    }else {
+      this.setState({
+        inputClass: "search-active",
+        labelClass: "active"
+      })
+    }
+  }
+
+  fetchMovies() {
+    this.setState({
+      inputClass: "search-active"
+    })
+
     this.props.updatePage(2);
     var searchText = this.refs.query.value
 
+    this.props.updateSearch(searchText);
+
     if(searchText.length > 1){
-
-      let formBoxTop = $('.search-form').offset().top;
-
-
-      if( formBoxTop > 145){
-        $('.search-form').css('margin-top', '30px');
-      }
 
       var url = 'https://www.omdbapi.com/?s=' + searchText.split(" ").join("+");
 
-      $.ajax({
-        url: url,
-        method: 'get'
-      }).done( function(response) {
-        if (response.Response === "True") {
-          this.props.updateMovies(response.Search, searchText);
-          $('.errors').empty();
-        } else {
-          this.props.updateMovies([]);
-          $('.errors').text(response.Error);
-        }
-      }.bind(this));
+      fetch(url)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.props.updateMovies(responseJson.Search, searchText);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
   }
 
-
   render(){
     return(
-      <div className="row">
-        <form onChange={this.fetchMovies.bind(this)} className="col s12 m6 offset-m3 search-form">
+      <div className="row" key="search">
+        <form className={`col m6 offset-m3 m6 offset-m3 s10 offset-s1 search-form ${this.state.inputClass}`}>
           <div className="input-field col s10 offset-s1">
             <i className="material-icons prefix">search</i>
-            <input ref="query" id='search-input' type="text" className='validate'/>
-            <label htmlFor="search-input" className='form-label'>Search movies by title</label>
+            <input ref="query" id='search-input' type="text" className='validate' value={this.props.currentSearch} onChange={this.fetchMovies.bind(this)}/>
+            <label htmlFor="search-input" className={`form-label ${this.state.labelClass}`}>Search movies by title</label>
+            <i className="material-icons prefix clear-search" onClick={() => {this.props.updateMovies([],"")}}>clear</i>
           </div>
         </form>
       </div>

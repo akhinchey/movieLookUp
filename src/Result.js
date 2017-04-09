@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
-import $ from 'jquery'
+import { Link } from 'react-router-dom';
+
 class Result extends Component {
-
-  fetchMovieInfo(event) {
-    event.preventDefault();
-    var url = 'https://www.omdbapi.com/?i=' + this.props.object.imdbID + '&plot=full';
-
-    $.ajax({
-      url: url,
-      method: 'get'
-    }).done( function(response) {
-      this.props.updateThisMovie(response);
-      this.props.navHandler("MovieInfo");
-    }.bind(this));
-  }
 
   render() {
     let posterUrl = this.props.object.Poster;
+
     if(posterUrl === 'N/A'){
       posterUrl = 'http://sd.keepcalm-o-matic.co.uk/i/keep-calm-poster-not-found.png'
     }
@@ -37,7 +26,9 @@ class Result extends Component {
                 </p>
               </div>
               <div className="card-action">
-                <a onClick={this.fetchMovieInfo.bind(this)} href="{this.props.object.title}">more info</a>
+                <Link to={`/movieLookUp/movies/${this.props.object.imdbID}`}>
+                  more info
+                </Link>
               </div>
             </div>
           </div>

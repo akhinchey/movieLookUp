@@ -1,39 +1,46 @@
 import React, { Component } from 'react';
 import Result from './Result';
-import $ from 'jquery';
 
 class Results extends Component {
+  handleScroll(ev) {
+    if((window.scrollY + window.innerHeight)/document.body.clientHeight >= 1){
+      this.fetchMoreMovies();
+    }
+  }
+
+  componentDidMount() {
+      window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll.bind(this));
+  }
 
   fetchMoreMovies(){
       var searchText = this.props.currentSearch;
       var url = 'https://www.omdbapi.com/?s=' + searchText.split(" ").join("+") + '&page=' + this.props.page.toString();
 
-      $.ajax({
-        url: url,
-        method: 'get'
-      }).done( function(response) {
-        if (response.Response === "True") {
-          let movies = this.props.movieList.concat(response.Search);
-          this.props.updateMovies(movies, searchText);
-          this.props.updatePage(this.props.page + 1)
-          $('.errors').empty();
-        } else {
-          $('.more').hide();
-        }
-      }.bind(this));
+      fetch(url)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        let movies = this.props.movieList.concat(responseJson.Search);
+        this.props.updateMovies(movies, searchText);
+        this.props.updatePage(this.props.page + 1);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {
     let movies = this.props.movieList;
-
     return(
-      <main className='center-align row'>
+      <div className='center-align row' onScroll={this.handleScroll.bind(this)}>
         {movies.map( function(obj, i) {
-          return <Result navHandler={this.props.navHandler} updateThisMovie={this.props.updateThisMovie} object={obj} key={i}/>
+          return <Result updateThisMovie={this.props.updateThisMovie} object={obj} key={i}/>
         }.bind(this))
-        }
-      <input className="more" type='button' onClick={this.fetchMoreMovies.bind(this)} value="load more"/>
-      </main>
+      }
+    </div>
     )
   }
 }

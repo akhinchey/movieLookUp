@@ -17,16 +17,23 @@ body {
   width: 300px;
 }
 
-.search-form {
-  margin-top: 20%;
-  border: solid 2px #e57373;
-  padding-left: 25px;
-  padding-top: 35px;
-  border-radius: 50px;;
+.welcome {
+  margin-top: 20vh;
+  font-size: 1.2em;
+  text-align: center;
 }
 
-.search-form:hover {
-  border: solid 2px rgba(0,0,0,0.7);
+.search-form {
+  margin-top: 40vh;
+  border: solid 2px #e57373;
+  border-radius: 50px;
+  transition: margin .07s ease;
+}
+
+.search-active {
+  margin-top: 5vh;
+  /*border: solid 2px rgba(0,0,0,0.7);*/
+  transition: margin-top 1s;
 }
 
 ul .info li, span, .plot {
@@ -87,4 +94,29 @@ strong {
 nav a {
   font-size: 20px !important;
   font-weight: 200;
+}
+
+.clear-search:hover {
+  color: black !important;
+  cursor: pointer;
+}
+
+.back-link {
+  color: black !important;
+  /*background-color: green;
+  display: block;*/
+}
+
+.back-link i {
+  display: inline-block;
+  position: relative;
+  top: 6px;
+}
+
+.back-link p {
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #e57373 !important;
 }
