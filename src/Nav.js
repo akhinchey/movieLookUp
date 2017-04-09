@@ -12,9 +12,8 @@ class Nav extends Component {
     return(
       <nav>
         <div className="nav-wrapper">
-
           <Link to='/'>
-            <div className="brand-logo"><img src='/logo.png' id='nav-logo' alt='logo'/></div>
+            <div className="brand-logo"><img src='logo.png' id='nav-logo' alt='logo'/></div>
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <Link to="/">

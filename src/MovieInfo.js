@@ -49,8 +49,8 @@ class MovieInfo extends Component {
     return(
       <div>
         <div className='container'>
-          <Link to='/'>
-            <i className="material-icons" style={{transform: 'rotate(180deg)'}}>trending_flat</i> back to search results
+          <Link to='/movieLookUp' className="back-link">
+            <i className="material-icons" style={{transform: 'rotate(180deg)'}}>trending_flat</i> <p>back to search results</p>
           </Link>
           <h2>{Title}</h2>
           <span>{Rated}</span><span>|</span>

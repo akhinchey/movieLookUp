@@ -56,7 +56,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav/>
-          <Route exact={true} path="/" render={() => {
+          <Route exact={true} path="/movieLookUp" render={() => {
             return(
               <div>
                 <Search
@@ -78,7 +78,7 @@ class App extends Component {
           }
           >
           </Route>
-          <Route path="/movies/:movieId" render={(movieId)=> {
+          <Route path="/movieLookUp/movies/:movieId" render={(movieId)=> {
             return <MovieInfo movieId={movieId}/>
           }}/>
         </div>

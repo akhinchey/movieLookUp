@@ -26,7 +26,7 @@ class Result extends Component {
                 </p>
               </div>
               <div className="card-action">
-                <Link to={`/movies/${this.props.object.imdbID}`}>
+                <Link to={`/movieLookUp/movies/${this.props.object.imdbID}`}>
                   more info
                 </Link>
               </div>

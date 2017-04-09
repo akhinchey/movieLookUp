@@ -100,3 +100,23 @@ nav a {
   color: black !important;
   cursor: pointer;
 }
+
+.back-link {
+  color: black !important;
+  /*background-color: green;
+  display: block;*/
+}
+
+.back-link i {
+  display: inline-block;
+  position: relative;
+  top: 6px;
+}
+
+.back-link p {
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #e57373 !important;
+}
